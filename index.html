@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shradha Sharma | Portfolio</title>
+       <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #050509;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* ================= BACKGROUND ================= */
+
+        body::before {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #8b00ff;
+            filter: blur(180px);
+            opacity: 0.25;
+            top: -150px;
+            left: -150px;
+            z-index: -2;
+        }
+
+        body::after {
+            content: "";
+            position: fixed;
+            width: 500px;
+            height: 500px;
+            background: #ff00b7;
+            filter: blur(180px);
+            opacity: 0.2;
+            bottom: -150px;
+            right: -150px;
+            z-index: -2;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px;
+            text-align: center;
+
+            background: rgba(0,0,0,0.55);
+            backdrop-filter: blur(15px);
+
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 14px;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: #ff79e5;
+            text-shadow: 0 0 15px #ff00d4;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 100px 20px;
+        }
+
+        .hero-card {
+            width: 90%;
+            max-width: 1100px;
+            padding: 70px 30px;
+
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.15);
+            border-radius: 35px;
+
+            backdrop-filter: blur(20px);
+
+            box-shadow:
+                0 0 50px rgba(190,0,255,0.15),
+                inset 0 0 30px rgba(255,255,255,0.03);
+
+            animation: appear 1.5s ease;
+        }
+
+        .crown {
+            font-size: 70px;
+            color: #ffd76a;
+
+            text-shadow:
+                0 0 10px #ffd76a,
+                0 0 30px #ff4fd8,
+                0 0 60px #a000ff;
+
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .hero h1 {
+            margin: 20px 0;
+
+            font-family: "Brush Script MT", cursive;
+            font-size: clamp(55px, 9vw, 110px);
+
+            background: linear-gradient(
+                90deg,
+                #ffffff,
+                #ff9bea,
+                #ffffff,
+                #d08aff,
+                #ffffff
+            );
+
+            background-size: 300%;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation:
+                gradient 5s linear infinite,
+                glow 2s infinite alternate;
+        }
+
+        .tagline {
+            font-size: 18px;
+            letter-spacing: 6px;
+            color: #f3d9f1;
+        }
+
+        .gold-line {
+            color: #ffd76a;
+            font-size: 25px;
+            margin: 15px;
+            text-shadow: 0 0 15px #ffd76a;
+        }
+
+        /* ================= BUTTON ================= */
+
+        .button {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 13px 30px;
+
+            color: white;
+            text-decoration: none;
+
+            border: 1px solid #ff72df;
+            border-radius: 30px;
+
+            box-shadow: 0 0 15px rgba(255,80,220,0.4);
+
+            transition: 0.4s;
+        }
+
+        .button:hover {
+            background: #ff4fd8;
+            box-shadow:
+                0 0 20px #ff4fd8,
+                0 0 50px #ff4fd8;
+
+            transform: translateY(-5px);
+        }
+
+        /* ================= SECTIONS ================= */
+
+        section {
+            min-height: 100vh;
+            padding: 110px 8% 70px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 45px;
+            margin-bottom: 50px;
+
+            color: #ff9bea;
+
+            text-shadow:
+                0 0 10px #ff55dd,
+                0 0 30px #8b00ff;
+        }
+
+        /* ================= CARDS ================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns:
+                repeat(auto-fit, minmax(250px, 1fr));
+
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .card {
+            padding: 30px;
+
+            background: rgba(255,255,255,0.05);
+
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 25px;
+
+            backdrop-filter: blur(12px);
+
+            transition: 0.4s;
+
+            box-shadow:
+                0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+
+            border-color: #ff6bdf;
+
+            box-shadow:
+                0 0 25px rgba(255,80,220,0.3);
+        }
+
+        .card h3 {
+            color: #ff9bea;
+            margin-bottom: 15px;
+        }
+
+        .card p {
+            color: #ddd;
+            line-height: 1.7;
+        }
+
+        /* ================= SKILLS ================= */
+
+        .skill {
+            margin: 20px 0;
+        }
+
+        .skill-name {
+            margin-bottom: 8px;
+        }
+
+        .bar {
+            height: 10px;
+            background: #1b1b25;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            border-radius: 20px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #8b00ff,
+                    #ff00b7
+                );
+
+            box-shadow:
+                0 0 15px #ff00b7;
+
+            animation: progress 2s ease;
+        }
+
+        /* ================= CONTACT ================= */
+
+        .contact {
+            max-width: 800px;
+            margin: auto;
+            text-align: center;
+        }
+
+        .contact-card {
+            padding: 40px;
+
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+
+            border-radius: 30px;
+
+            backdrop-filter: blur(15px);
+        }
+
+        .contact-card p {
+            margin: 15px;
+            font-size: 18px;
+            color: #eee;
+        }
+
+        .contact-card span {
+            color: #ff8ce6;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            text-align: center;
+            padding: 30px;
+
+            border-top: 1px solid rgba(255,255,255,0.1);
+
+            color: #aaa;
+        }
+
+        /* ================= ANIMATIONS ================= */
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            0%,100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes gradient {
+            0% {
+                background-position: 0%;
+            }
+
+            100% {
+                background-position: 300%;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                filter: drop-shadow(0 0 8px #ff55dd);
+            }
+
+            to {
+                filter:
+                    drop-shadow(0 0 20px #ff55dd)
+                    drop-shadow(0 0 40px #8b00ff);
+            }
+        }
+
+        @keyframes progress {
+            from {
+                width: 0;
+            }
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:600px) {
+
+            nav a {
+                margin: 0 5px;
+                font-size: 11px;
+            }
+
+            .hero-card {
+                padding: 50px 15px;
+            }
+
+            .tagline {
+                font-size: 12px;
+                letter-spacing: 3px;
+            }
+
+            .section-title {
+                font-size: 35px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ================= NAVIGATION ================= -->
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+
+    <!-- ================= HOME ================= -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-card">
+
+            <div class="crown">♕</div>
+
+            <div class="gold-line">
+                ───── ✦ ─────
+            </div>
+
+            <h1>Shradha Sharma</h1>
+
+            <div class="gold-line">
+                ───── ♥ ─────
+            </div>
+
+            <p class="tagline">
+                DREAM • BELIEVE • ACHIEVE
+            </p>
+
+            <a href="#about" class="button">
+                Explore My World ✨
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= ABOUT ================= -->
+
+    <section id="about">
+
+        <h2 class="section-title">
+            ✨ About Me
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>👩 Who Am I?</h3>
+
+                <p>
+                    Hello! I'm Shradha Sharma,
+                    a Computer Science Engineering
+                    student passionate about coding,
+                    technology and creating
+                    interesting projects.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🎯 My Goal</h3>
+
+                <p>
+                    My goal is to continuously learn
+                    new technologies, improve my
+                    programming skills and build
+                    meaningful projects.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>📍 Location</h3>
+
+                <p>
+                    India<br>
+                    Odisha
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= EDUCATION ================= -->
+
+    <section id="education">
+
+        <h2 class="section-title">
+            🎓 Education
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>B.Tech CSE</h3>
+
+                <p>
+                    Computer Science Engineering
+                </p>
+
+                <p>
+                    Akal University
+                </p>
+
+                <p>
+                    Talwandi Sabo, Punjab
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= SKILLS ================= -->
+
+    <section id="skills">
+
+        <h2 class="section-title">
+            💻 My Skills
+        </h2>
+
+        <div class="card">
+
+            <div class="skill">
+                <div class="skill-name">
+                    Python
+                </div>
+
+                <div class="bar">
+                    <div class="progress" style="width:80%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">
+                    Java
+                </div>
+
+                <div class="bar">
+                    <div class="progress" style="width:100%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">
+                    C / C++
+                </div>
+
+                <div class="bar">
+                    <div class="progress" style="width:75%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">
+                    SQL
+                </div>
+
+                <div class="bar">
+                    <div class="progress" style="width:65%"></div>
+                </div>
+            </div>
+
+
+            <div class="skill">
+                <div class="skill-name">
+                    HTML / CSS
+                </div>
+
+                <div class="bar">
+                    <div class="progress" style="width:70%"></div>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= PROJECTS ================= -->
+
+    <section id="projects">
+
+        <h2 class="section-title">
+            🚀 My Projects
+        </h2>
+
+        <div class="cards">
+
+            <div class="card">
+
+                <h3>🌐 Web Projects</h3>
+
+                <p>
+                    Creative websites using
+                    HTML, CSS and JavaScript.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🐍 Python Projects</h3>
+
+                <p>
+                    Python-based applications
+                    and programming projects.
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>🚗 Ride Sharing Simulation</h3>
+
+                <p>
+                    A Python project simulating
+                    a ride-sharing system.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= CONTACT ================= -->
+
+    <section id="contact">
+
+        <h2 class="section-title">
+            💌 Contact Me
+        </h2>
+
+        <div class="contact">
+
+            <div class="contact-card">
+
+                <p>
+                    📍 <span>State:</span>
+                    Odisha, India
+                </p>
+
+                <p>
+                    🏫 <span>University:</span>
+                    Akal University, Talwandi Sabo, Bathinda, Punjab, India
+                </p>
+
+                <p>
+                    📧 <span>Email ID:</span>
+                    shradhasharma20072005@gmail.com
+                </p>
+
+                <p>
+                    📱 <span>Phone:</span>
+                    +91 XXXXX XXXXX
+                </p>
+
+                <p>
+                    💻 <span>GitHub:</span>
+                    shradhasharma20-ss
+                </p>
+
+                <p>
+                    🔗 <span>LinkedIn:</span>
+                    shradha-sharma-345506388
+                </p>
+
+                <p>
+                    📸 <span>Instagram ID:</span>
+                    shradha_sharma20
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        ✨ Made with ❤️ by Shradha Sharma ✨
+
+    </footer>
+
+</body>
+</html>
